@@ -4,15 +4,6 @@ const { MongoClient, ObjectID } = require("mongodb");
 const connectionURL = "mongodb://127.0.0.1:27017";
 const databaseName = "task-manager";
 
-const id = new ObjectID();
-
-// Mongodb GUID includes a timestamp
-console.log(id);
-console.log(id.getTimestamp());
-
-// Raw binary of id
-console.log(id.id);
-
 MongoClient.connect(
   connectionURL,
   { useUnifiedTopology: true },
@@ -24,23 +15,22 @@ MongoClient.connect(
 
     const db = client.db(databaseName);
 
-    // Insert one document
-    db.collection("users").insertOne(
-      {
-        _id: id,
-        name: "Bertha",
-        age: 20,
-      },
-      (error, result) => {
-        if (error) {
-          return console.log("Unable to insert user");
-        }
+    // Insert one document:
+    // db.collection("users").insertOne(
+    //   {
+    //     name: "Bertha",
+    //     age: 20,
+    //   },
+    //   (error, result) => {
+    //     if (error) {
+    //       return console.log("Unable to insert user");
+    //     }
 
-        console.log(result.ops);
-      }
-    );
+    //     console.log(result.ops);
+    //   }
+    // );
 
-    // Insert many documents
+    // Insert many documents:
     // db.collection("tasks").insertMany(
     //   [
     //     {
@@ -67,5 +57,44 @@ MongoClient.connect(
     //     console.log(result.ops);
     //   }
     // );
+
+    // Get one document from db:
+    // db.collection("users").findOne({ name: "Jen" }, (error, user) => {
+    //   if (error) {
+    //     return console.log("Unable to fetch document!");
+    //   }
+
+    //   console.log(user);
+    // });
+
+    // Get many documents from db
+    // find returs a 'cursor', not the actual data
+    // thats why .toArray is needed
+    // db.collection("users")
+    //   .find({ age: 27 })
+    //   .toArray((error, users) => {
+    //     console.log(users);
+    //   });
+
+    // Count the amount of found items:
+    // db.collection("users")
+    //   .find({ age: 27 })
+    //   .count((error, count) => {
+    //     console.log(count);
+    //   });
+
+    // Get by id
+    db.collection("tasks").findOne(
+      { _id: new ObjectID("6015c86d6f0df4173007cc9e") },
+      (error, task) => {
+        console.log(task);
+      }
+    );
+
+    db.collection("tasks")
+      .find({ completed: false })
+      .toArray((error, tasks) => {
+        console.log(tasks);
+      });
   }
 );
