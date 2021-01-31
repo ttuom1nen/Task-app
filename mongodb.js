@@ -84,17 +84,59 @@ MongoClient.connect(
     //   });
 
     // Get by id
-    db.collection("tasks").findOne(
-      { _id: new ObjectID("6015c86d6f0df4173007cc9e") },
-      (error, task) => {
-        console.log(task);
-      }
-    );
+    // db.collection("tasks").findOne(
+    //   { _id: new ObjectID("6015c86d6f0df4173007cc9e") },
+    //   (error, task) => {
+    //     console.log(task);
+    //   }
+    // );
+
+    // db.collection("tasks")
+    //   .find({ completed: false })
+    //   .toArray((error, tasks) => {
+    //     console.log(tasks);
+    //   });
+
+    // Update a document:
+    // db.collection("users")
+    //   .updateOne(
+    //     {
+    //       _id: new ObjectID("6015c26eb17a26046080303a"),
+    //     },
+    //     {
+    //       $set: {
+    //         name: "Mike",
+    //       },
+
+    //       //Increment a value:
+    //       $inc: {
+    //         age: 1,
+    //       },
+    //     }
+    //   )
+    //   .then((result) => {
+    //     console.log(result);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
 
     db.collection("tasks")
-      .find({ completed: false })
-      .toArray((error, tasks) => {
-        console.log(tasks);
+      .updateMany(
+        {
+          completed: false,
+        },
+        {
+          $set: {
+            completed: true,
+          },
+        }
+      )
+      .then((result) => {
+        console.log(result.modifiedCount);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 );
