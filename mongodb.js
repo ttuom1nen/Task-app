@@ -83,7 +83,7 @@ MongoClient.connect(
     //     console.log(count);
     //   });
 
-    // Get by id
+    // Get by id:
     // db.collection("tasks").findOne(
     //   { _id: new ObjectID("6015c86d6f0df4173007cc9e") },
     //   (error, task) => {
@@ -121,19 +121,44 @@ MongoClient.connect(
     //     console.log(error);
     //   });
 
+    // Update many documents:
+    // db.collection("tasks")
+    //   .updateMany(
+    //     {
+    //       completed: false,
+    //     },
+    //     {
+    //       $set: {
+    //         completed: true,
+    //       },
+    //     }
+    //   )
+    //   .then((result) => {
+    //     console.log(result.modifiedCount);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
+    // Delete many documents:
+    // db.collection("users")
+    //   .deleteMany({
+    //     age: 27,
+    //   })
+    //   .then((result) => {
+    //     console.log(result);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
     db.collection("tasks")
-      .updateMany(
-        {
-          completed: false,
-        },
-        {
-          $set: {
-            completed: true,
-          },
-        }
-      )
+      .deleteOne({
+        description:
+          "string belong everything phrase cold image took standard stranger larger brain attached exchange brief donkey instrument specific refer dawn orange happy consider stretch guard",
+      })
       .then((result) => {
-        console.log(result.modifiedCount);
+        console.log(result);
       })
       .catch((error) => {
         console.log(error);
