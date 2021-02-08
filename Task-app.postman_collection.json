@@ -1,111 +1,221 @@
 {
-  "info": {
-    "_postman_id": "412d4def-efd0-42cf-a7f3-58aba936a35f",
-    "name": "Task app",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "Create user",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"name\": \"Test User\",\r\n    \"email\": \"test.user@tester.com\",\r\n    \"password\": \"24ebbff7-e9ae-5b1c-942b-1b06de0dcb42\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "localhost:3000/users",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["users"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Create task",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"description\": \"record exactly being rocky yellow eventually say material underline great lady art depth popular sport smell stand active understanding conversation ear tower space beyond\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "localhost:3000/tasks",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["tasks"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Read users",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "localhost:3000/users",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["users"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Read user",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "localhost:3000/users/601b058bc2fe751dbc1f76cb",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["users", "601b058bc2fe751dbc1f76cb"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Read tasks",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "localhost:3000/tasks",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["tasks"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Read task",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "localhost:3000/tasks/6019b99d3a175129c01e0385",
-          "host": ["localhost"],
-          "port": "3000",
-          "path": ["tasks", "6019b99d3a175129c01e0385"]
-        }
-      },
-      "response": []
-    }
-  ]
+	"info": {
+		"_postman_id": "f042c3de-b626-41a0-a95f-339232c8b70b",
+		"name": "Task app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Test User 2\",\r\n    \"email\": \"test.user@tester.com\",\r\n    \"password\": \"24ebbff7-e9ae-5b1c-942b-1b06de0dcb42\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"record exactly being rocky yellow eventually say material underline great lady art depth popular sport smell stand active understanding conversation ear tower space beyond\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/tasks",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/users/601b058bc2fe751dbc1f76cb",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"601b058bc2fe751dbc1f76cb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/tasks",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read task",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/tasks/6019b99d3a175129c01e0385",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks",
+						"6019b99d3a175129c01e0385"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"New name\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/6019b7596fc72f0420ab16be",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"6019b7596fc72f0420ab16be"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update task",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"completed\": true,\r\n    \"description\": \"xxx\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/tasks/601e6c51a0a7a0046814fc97",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks",
+						"601e6c51a0a7a0046814fc97"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/tasks/601fa2b84e955524a8aa1198",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks",
+						"601fa2b84e955524a8aa1198"
+					]
+				}
+			},
+			"response": []
+		}
+	]
 }
