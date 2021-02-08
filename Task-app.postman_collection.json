@@ -199,7 +199,7 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "Delete task",
 			"request": {
 				"method": "DELETE",
 				"header": [],
