@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Test User 2\",\r\n    \"email\": \"test.user@tester.com\",\r\n    \"password\": \"24ebbff7-e9ae-5b1c-942b-1b06de0dcb42\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Test User\",\r\n    \"email\": \"test2.user@tester.com\",\r\n    \"password\": \"testerman\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -60,18 +60,31 @@
 			"response": []
 		},
 		{
-			"name": "Read users",
+			"name": "Read profile",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDI0NDRmYzZhMmVhYTAxZjQ1Y2I5ZTAiLCJpYXQiOjE2MTMxNjE3Njd9.px1anYXxhICHMPYxiEd7-lgCDymXsvlhRKfSxEx0cu8",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
 				"url": {
-					"raw": "localhost:3000/users",
+					"raw": "localhost:3000/users/me",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"users"
+						"users",
+						"me"
 					]
 				}
 			},
@@ -98,9 +111,16 @@
 		},
 		{
 			"name": "Read tasks",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "localhost:3000/tasks",
 					"host": [
@@ -120,14 +140,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/tasks/6019b99d3a175129c01e0385",
+					"raw": "localhost:3000/tasks/601e6c51a0a7a0046814fc97",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"tasks",
-						"6019b99d3a175129c01e0385"
+						"601e6c51a0a7a0046814fc97"
 					]
 				}
 			},
@@ -194,7 +214,17 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "localhost:3000/users/6019b7596fc72f0420ab16be",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"6019b7596fc72f0420ab16be"
+					]
+				}
 			},
 			"response": []
 		},
@@ -212,6 +242,34 @@
 					"path": [
 						"tasks",
 						"601fa2b84e955524a8aa1198"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test.user@tester.com\",\r\n    \"password\": \"SuperSecretPw123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"login"
 					]
 				}
 			},
