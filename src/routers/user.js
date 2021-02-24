@@ -97,6 +97,13 @@ const upload = multer({
   limits: {
     fileSize: 10000000, // 1mb
   },
+  fileFilter(req, file, callBack) {
+    if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+      return callBack(new Error("Please upload an image"));
+    }
+
+    callBack(undefined, true);
+  },
 });
 
 router.post("/users/me/avatar", upload.single("avatar"), (req, res) => {
