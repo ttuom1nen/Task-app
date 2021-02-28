@@ -1,17 +1,29 @@
 const sgMail = require("@sendgrid/mail");
-const sendgridAPIKey = "e2d2e9c7-6d24-5613-8d83-316582a1cb49";
+
+// Not a real api key
+const sendgridAPIKey = "";
 
 sgMail.setApiKey(sendgridAPIKey);
 
 const sendWelcomeEmail = (email, name) => {
   sgMail.send({
     to: email,
-    from: "other.tester@email.com",
+    from: "someone@taskapp.com",
     subject: "Thank you for joining in!",
     text: `Welcome to the app, ${name}!`,
   });
 };
 
+const sendCancellationEmail = (email, name) => {
+  sgMail.send({
+    to: email,
+    from: "someone@taskapp.com",
+    subject: "Sorry to hear that you are leaving...",
+    text: `...You are always welcome back, ${name}!`,
+  });
+};
+
 module.exports = {
   sendWelcomeEmail,
+  sendCancellationEmail,
 };
