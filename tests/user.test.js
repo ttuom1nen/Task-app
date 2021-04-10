@@ -1,11 +1,10 @@
 const request = require("supertest")
 const app = require("../src/app")
 
-
-userSignup("Should signup a new user", async () => {
-    await (await request(app).post("/users")).setEncoding({
+test("Should signup a new user", async () => {
+    await request(app).post("/users").send({
         name: "Jest user",
         email: "jestuser@example.com",
-        password: "ValidPassword01"
+        password: "ValidPassword111"
     }).expect(201)
 })
