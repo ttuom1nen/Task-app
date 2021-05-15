@@ -1,3 +1,4 @@
+import authenticate from "../services/authenticate";
 import { Container, Header, Form, Checkbox, Button } from "semantic-ui-react";
 
 const LoginForm = () => {
@@ -10,6 +11,8 @@ const LoginForm = () => {
 
     const username = target.username.value;
     const password = target.password.value;
+
+    authenticate({ username, password });
   };
 
   return (
