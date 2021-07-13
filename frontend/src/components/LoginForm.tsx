@@ -1,7 +1,14 @@
 import authenticate from "../services/auth.service";
-import { Container, Header, Form, Checkbox, Button } from "semantic-ui-react";
+// import { RootState } from "../state/store";
+import { Container, Header, Form, Button } from "semantic-ui-react";
+import { /*useAppSelector,*/ useAppDispatch } from "../state/hooks";
+import { setName } from "../state/userSlice";
+import { LoginInfo } from "../models";
 
 const LoginForm = () => {
+  // const name = useAppSelector((state: RootState) => state.user.name);
+  const dispatch = useAppDispatch();
+
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
@@ -12,9 +19,10 @@ const LoginForm = () => {
     const email = target.email.value;
     const password = target.password.value;
 
-    authenticate({ email, password }).then((user) => {
-      if (user) {
-        console.log(user);
+    authenticate({ email, password }).then((loginInfo: LoginInfo) => {
+      if (loginInfo) {
+        const { user } = loginInfo;
+        dispatch(setName(user.name));
       }
     });
   };
