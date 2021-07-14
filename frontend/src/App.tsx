@@ -1,20 +1,21 @@
-import LoginForm from "./components/LoginForm";
-import { Grid, Segment } from "semantic-ui-react";
-import "./App.css";
+import LoginView from "./views/LoginView";
+import { PrivateRoute } from "./utils/PrivateRoute";
+import { Switch, Route } from "react-router-dom";
+
+// import "./App.css";
+
+function Hooray() {
+  return <p>Jee</p>;
+}
 
 function App() {
   return (
-    <Grid columns="equal">
-      <Grid.Row>
-        <Grid.Column></Grid.Column>
-        <Grid.Column>
-          <Segment>
-            <LoginForm></LoginForm>
-          </Segment>
-        </Grid.Column>
-        <Grid.Column></Grid.Column>
-      </Grid.Row>
-    </Grid>
+    <Switch>
+      <Route exact path="/login" component={LoginView} />
+      <PrivateRoute path="/">
+        <Hooray></Hooray>
+      </PrivateRoute>
+    </Switch>
   );
 }
 
