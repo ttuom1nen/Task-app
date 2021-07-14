@@ -1,15 +1,14 @@
-// import authenticate from "../services/_auth.service";
-// import { RootState } from "../state/store";
 import React, { useState } from "react";
-import { Container, Header, Form, Button } from "semantic-ui-react";
-import { /*useAppSelector,*/ useAppDispatch } from "../state/hooks";
+import { Segment, Container, Header, Form, Button } from "semantic-ui-react";
+import { useAppDispatch } from "../hooks/useStore";
 import { setCredentials } from "../state/authSlice";
 import { LoginRequest /*, LoginResponse*/ } from "../models";
 import { useLoginMutation } from "../services/auth.service";
+import { useHistory } from "react-router-dom";
 
 const LoginForm = () => {
-  // const name = useAppSelector((state: RootState) => state.user.name);
   const dispatch = useAppDispatch();
+  const { push } = useHistory();
 
   const [formState, setFormState] = useState<LoginRequest>({
     email: "",
@@ -22,8 +21,9 @@ const LoginForm = () => {
     try {
       const user = await login(formState).unwrap();
       dispatch(setCredentials(user));
-      // TODO: push('/')
-    } catch (err) {
+      push("/");
+    } catch (e) {
+      console.error(e);
       // TODO: Show error toast
     }
   };
@@ -39,30 +39,37 @@ const LoginForm = () => {
     setFormState((prev) => ({ ...prev, [name]: value }));
 
   return (
-    <Container>
-      <Header as="h1">Login</Header>
-      <Form onSubmit={(e) => handleSubmit(e)}>
-        <Form.Field>
-          <label>Username</label>
-          <input
-            type="text"
-            placeholder="Email"
-            name="email"
-            onChange={handleChange}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            onChange={handleChange}
-          />
-        </Form.Field>
-        <Button type="submit">Submit</Button>
-      </Form>
-    </Container>
+    <Segment>
+      <Header as="h2">Login</Header>
+      {isLoading ? (
+        <p>Logging in</p>
+      ) : (
+        <Form onSubmit={(e) => handleSubmit(e)}>
+          <Form.Field>
+            <label>Username</label>
+            <input
+              type="text"
+              placeholder="Email"
+              name="email"
+              autoComplete="username"
+              onChange={handleChange}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              autoComplete="current-password"
+              id="current-password"
+              onChange={handleChange}
+            />
+          </Form.Field>
+          <Button type="submit">Submit</Button>
+        </Form>
+      )}
+    </Segment>
   );
 };
 
