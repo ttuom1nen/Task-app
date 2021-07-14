@@ -1,21 +1,20 @@
 import React from "react";
 import LoginForm from "../components/LoginForm";
-import { Container, Grid, Segment, Header } from "semantic-ui-react";
+import { Grid, Header, Message } from "semantic-ui-react";
 
 const LoginView = () => {
   return (
-    <Container>
-      <Header as="h1">Login to Task App</Header>
-      <Grid columns="equal">
-        <Grid.Row>
-          <Grid.Column></Grid.Column>
-          <Grid.Column>
-            <LoginForm></LoginForm>
-          </Grid.Column>
-          <Grid.Column></Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Container>
+    <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Header as="h2" color="teal" textAlign="center">
+          Log-in to your account
+        </Header>
+        <LoginForm></LoginForm>
+        <Message>
+          No account yet? <a href="#">Sign Up</a>
+        </Message>
+      </Grid.Column>
+    </Grid>
   );
 };
 

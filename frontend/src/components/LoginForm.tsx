@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Segment, Container, Header, Form, Button } from "semantic-ui-react";
+import { Segment, Form, Button } from "semantic-ui-react";
 import { useAppDispatch } from "../hooks/useStore";
 import { setCredentials } from "../state/authSlice";
-import { LoginRequest /*, LoginResponse*/ } from "../models";
+import { LoginRequest } from "../models";
 import { useLoginMutation } from "../services/auth.service";
 import { useHistory } from "react-router-dom";
 
@@ -40,33 +40,36 @@ const LoginForm = () => {
 
   return (
     <Segment>
-      <Header as="h2">Login</Header>
       {isLoading ? (
         <p>Logging in</p>
       ) : (
-        <Form onSubmit={(e) => handleSubmit(e)}>
+        <Form size="large" onSubmit={(e) => handleSubmit(e)}>
           <Form.Field>
-            <label>Username</label>
-            <input
-              type="text"
-              placeholder="Email"
+            <Form.Input
+              fluid
+              icon="user"
+              iconPosition="left"
               name="email"
+              placeholder="E-mail address"
               autoComplete="username"
+              id="username"
               onChange={handleChange}
             />
-          </Form.Field>
-          <Form.Field>
-            <label>Password</label>
-            <input
-              type="password"
+            <Form.Input
+              fluid
+              icon="lock"
+              iconPosition="left"
               placeholder="Password"
               name="password"
+              type="password"
               autoComplete="current-password"
               id="current-password"
               onChange={handleChange}
             />
           </Form.Field>
-          <Button type="submit">Submit</Button>
+          <Button type="submit" color="teal" fluid size="large">
+            Submit
+          </Button>
         </Form>
       )}
     </Segment>
