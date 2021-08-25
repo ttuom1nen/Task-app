@@ -49,6 +49,7 @@ const LoginForm = () => {
     <Form onSubmit={(e) => handleSubmit(e)}>
       <PaddedContainer>
         <CustomInput
+          placeholder="Email"
           name="email"
           autoComplete="username"
           id="username"
@@ -57,6 +58,7 @@ const LoginForm = () => {
       </PaddedContainer>
       <PaddedContainer>
         <CustomInput
+          placeholder="Password"
           name="password"
           type="password"
           autoComplete="current-password"
