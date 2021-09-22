@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../state/store";
-import { LoginResponse, LoginRequest } from "../models";
+import { LoginResponse, LoginRequest, Task } from "../models";
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
@@ -25,7 +25,42 @@ export const api = createApi({
     protected: builder.mutation<{ message: string }, void>({
       query: () => "protected",
     }),
+    tasks: builder.query<Task[], string>({
+      // note: an optional `queryFn` may be used in place of `query`
+      query: (params) => ({ url: `tasks${params}` }),
+      // Pick out data and prevent nested properties in a hook or selector
+      transformResponse: (response: { data: Task[] }) => response.data,
+      // providesTags: (result, error, id) => [{ type: "Post", id }],
+      // The 2nd parameter is the destructured `QueryLifecycleApi`
+
+      async onQueryStarted(
+        arg,
+        {
+          dispatch,
+          getState,
+          extra,
+          requestId,
+          queryFulfilled,
+          getCacheEntry,
+          updateCachedData,
+        }
+      ) {},
+      // The 2nd parameter is the destructured `QueryCacheLifecycleApi`
+      async onCacheEntryAdded(
+        arg,
+        {
+          dispatch,
+          getState,
+          extra,
+          requestId,
+          cacheEntryRemoved,
+          cacheDataLoaded,
+          getCacheEntry,
+          updateCachedData,
+        }
+      ) {},
+    }),
   }),
 });
 
-export const { useLoginMutation, useProtectedMutation } = api;
+export const { useLoginMutation, useProtectedMutation, useTasksQuery } = api;

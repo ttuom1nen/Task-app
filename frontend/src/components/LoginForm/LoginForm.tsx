@@ -25,8 +25,8 @@ const LoginForm = () => {
       const user = await login(formState).unwrap();
       dispatch(setCredentials(user));
       push("/");
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
       // TODO: Show error toast
     }
   };
